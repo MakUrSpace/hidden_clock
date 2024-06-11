@@ -1,6 +1,6 @@
 # [Hidden Clock](https://github.com/makurspace/hidden_clock)
 
-This is a project to build clock. Driven by a ESP32C3, using a 3D printed light difuser and a NeoPixel LED ring, this clock will display the hour and minute as shadowed numbers in glowing hexagons.
+This is a project to build clock. Driven by a ESP32C3, using a 3D printed light diffuser and a NeoPixel LED ring, this clock will display the hour and minute as shadowed numbers in glowing hexagons.
 
 ### Working Example!
 ![Working Hidden Clock](HiddenClockFunctional.jpg)
@@ -27,7 +27,7 @@ This is a project to build clock. Driven by a ESP32C3, using a 3D printed light 
 
 ## Inspirations
 
-I had been playing with lithophanes a lot ([such as those from the Lithophane Maker](https://lithophanemaker.com/)) and became enamored with how a thick-but-not-too-thick light difuser could cause an image to disappear without a backlight. The effect made static surfaces able to pop with hidden messages. I made some concept pieces out of wood that confirmed the basic idea. And then, toying with a NeoPixel ring one day, the idea of a light difuser based clock came together.
+I had been playing with lithophanes a lot ([such as those from the Lithophane Maker](https://lithophanemaker.com/)) and became enamored with how a thick-but-not-too-thick light difuser could cause an image to disappear without a backlight. The effect made static surfaces able to pop with hidden messages. I made some concept pieces out of wood that confirmed the basic idea. And then, toying with a NeoPixel ring one day, the idea of a light diffuser based clock came together.
 
 ## Hidden Clockface Model
 
