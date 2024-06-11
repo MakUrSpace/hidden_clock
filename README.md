@@ -17,7 +17,9 @@ This is a project to build clock. Driven by a ESP32C3, using a 3D printed light 
 ### [Clock Controller](clock.upy)
 * [Micropython](https://micropython.org/)
 
+
 ### [Hidden Clockface Generator](HiddenClockfaceGenerator.md)
+
 * [Jupyter](https://jupyter.org/)
 * [OpenSCAD](https://openscad.org/)
 * [solidpython](https://github.com/SolidCode/SolidPython)
@@ -26,6 +28,11 @@ This is a project to build clock. Driven by a ESP32C3, using a 3D printed light 
 ## Inspirations
 
 I had been playing with lithophanes a lot ([such as those from the Lithophane Maker](https://lithophanemaker.com/)) and became enamored with how a thick-but-not-too-thick light difuser could cause an image to disappear without a backlight. The effect made static surfaces able to pop with hidden messages. I made some concept pieces out of wood that confirmed the basic idea. And then, toying with a NeoPixel ring one day, the idea of a light difuser based clock came together.
+
+## Hidden Clockface Model
+
+![Hidden Clockface](BaseMinusAllFaces.png)
+
 
 ## Assembly Instructions
 
