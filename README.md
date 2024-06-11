@@ -11,7 +11,7 @@ This is a project to build clock. Driven by a ESP32C3, using a 3D printed light 
  
 ## Code Dependencies
 
-### [Clock Controller](Clock.md)
+### [Clock Controller](Clock.ipynb)
 * [Micropython](https://micropython.org/)
 
 ### [Hidden Clockface Generator](HiddenClockfaceGenerator.ipynb)
