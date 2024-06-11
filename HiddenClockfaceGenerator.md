@@ -94,7 +94,7 @@ clock = base - s.translate([0, 0, shade_height])(faces)
 
 r.render(base - faces, outfile="HiddenClockface.stl")
 ```
-![Hidden Clockface](BaseMinusFace.png)
+![Hidden Clockface](BaseMinusFaces.png)
 
 
 
