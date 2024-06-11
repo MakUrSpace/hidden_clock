@@ -2,6 +2,9 @@
 
 This is a project to build clock. Driven by a ESP32C3, using a 3D printed light difuser and a NeoPixel LED ring, this clock will display the hour and minute as shadowed numbers in glowing hexagons.
 
+### Working Example!
+![Working Hidden Clock](HiddenClockFunctional.jpg)
+
 ## External Parts
 
 * [24x NeoPixel Ring](https://www.adafruit.com/product/1586)
