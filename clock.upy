@@ -1,0 +1,115 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# # Clock Firmware
+# 
+# Micropython Clock Firmware for a [Adafruit QT Py ESP32-C3](https://www.adafruit.com/product/5405)
+# 
+# ![QT Py ESP32-C3](https://cdn-shop.adafruit.com/970x728/5405-06.jpg)
+
+
+from machine import Pin
+from neopixel import NeoPixel
+from time import sleep, localtime
+
+
+# Define NeoPixel driving pin and object
+
+
+neopin = Pin(7, Pin.OUT)
+np = NeoPixel(neopin, 24)
+
+
+# Define GPIO Input pin for the QT Py's pushbutton
+
+
+gpiopin = Pin(9, Pin.IN)
+
+
+# Define globals for internal clock configuration. These are set by the button interrupt, stored in onboard files, and used to adjust the clock display to the desired time.
+
+
+hour_modifier = 0
+minute_modifier = 0
+modified = False
+
+
+# Defines button press interrupt that interprets a short press (sub 200 milliseconds) as a minute display modification and a long press as an hour display modification.
+
+def button_pressed(change):
+    global hour_modifier, minute_modifier, modified
+    modified = True
+    gpiopin.irq(handler=None)
+    sleep(0.2)
+    if gpiopin.value() == 1:
+        minute_modifier = (minute_modifier + 3) % 60
+    else:
+        hour_modifier = (hour_modifier + 1) % 12
+    gpiopin.irq(trigger=Pin.IRQ_FALLING, handler=button_pressed)
+
+gpiopin.irq(trigger=Pin.IRQ_FALLING, handler=button_pressed)
+
+
+# Defines functions for storing clock display modifiers. If `read_modifiers` fails to open the `modifiers` file, it will panic and create new modifiers with the default 0.
+
+def write_modifiers():
+    global modified
+    modified = False
+    with open("modifiers", "w") as f:
+        f.write("{};{}".format(hour_modifier, minute_modifier))
+
+def read_modifiers():
+    global hour_modifier, minute_modifier, modified
+    try:
+        with open("modifiers", "r") as f:
+            hour_modifier, minute_modifier = [int(m) for m in f.read().split(";")]
+    except OSError as e:
+        hour_modifier = 0
+        minute_modifier = 0
+        modified = True
+
+
+# Utility function to tunr off all lights on the neopixel ring
+
+def clear_lights():
+    for i in range(24):
+        np[i] = (0, 0, 0)
+
+
+# Defines the shades to use for the minute and hour hands. While the NeoPixels can display a full RGB array of colors, most diffusers limit the usable range. Green PLA and wood limit green and blue light, but really shine with red.
+# 
+# For my target green PLA clockface material, these values work out to a white shade for the hour hand and a red shade for the minute hand.
+
+minute_shade = (45, 10, 0)
+hour_shade = (60, 15, 15)
+
+
+# Function to set the NeoPixel LEDs in sync with the time. By initialing calling `clear_lights`, all pixels are set to off (`(0, 0, 0)`). The time is retrieved from a call to the `time.localtime` function. The hour and minute values are extracted from the `localtime` list. The values are converted to corresponding NeoPixel indices adjusted by the user-set modifiers.
+
+def set_lights():
+    clear_lights()
+    timestamp = localtime()
+    print("{}:{:02}".format(timestamp[3], timestamp[4]))
+    hour = ((timestamp[3] + hour_modifier) % 12) * 2
+    minute = (int((timestamp[4] + minute_modifier) / 5) * 2) % 24
+    print("H:{} M:{} -- ({};{})".format(hour, minute, hour_modifier, minute_modifier))
+    np[minute] = minute_shade
+    np[hour] = hour_shade
+
+
+# The clock's main function with an infinite loop, updating the NeoPixel ring every second.
+
+def clock():
+    read_modifiers()
+    clear_lights()
+    np.write()
+    while True:
+        set_lights()
+        np.write()
+        sleep(1)
+        if modified:
+            write_modifiers()
+
+
+if __name__ == "__main__":
+    clock()

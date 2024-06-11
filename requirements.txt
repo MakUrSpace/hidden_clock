@@ -1,0 +1,4 @@
+jupyterlab
+# openscad
+solidpython
+viewscad
