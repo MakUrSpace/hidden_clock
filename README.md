@@ -17,7 +17,7 @@ This is a project to build clock. Driven by a ESP32C3, using a 3D printed light 
 ### [Clock Controller](clock.upy)
 * [Micropython](https://micropython.org/)
 
-### [Hidden Clockface Generator](HiddenClockfaceGenerator.ipynb)
+### [Hidden Clockface Generator](HiddenClockfaceGenerator.md)
 * [Jupyter](https://jupyter.org/)
 * [OpenSCAD](https://openscad.org/)
 * [solidpython](https://github.com/SolidCode/SolidPython)
