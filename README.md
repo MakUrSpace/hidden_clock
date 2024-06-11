@@ -1,4 +1,4 @@
-# [Hidden Clock](github.com/makurspace/hidden_clock)
+# [Hidden Clock](https://github.com/makurspace/hidden_clock)
 
 This is a project to build clock. Driven by a ESP32C3, using a 3D printed light difuser and a NeoPixel LED ring, this clock will display the hour and minute as shadowed numbers in glowing hexagons.
 
