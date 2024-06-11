@@ -31,7 +31,7 @@ I had been playing with lithophanes a lot ([such as those from the Lithophane Ma
 
 ## Hidden Clockface Model
 
-![Hidden Clockface](BaseMinusAllFaces.png)
+![Hidden Clockface](BaseMinusFaces.png)
 
 
 ## Assembly Instructions
